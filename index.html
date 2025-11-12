@@ -11,72 +11,145 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- confetti canvas stays at top-level -->
   <canvas id="confetti"></canvas>
 
+  <!-- SITE HEADER -->
   <header class="site-header">
     <div class="badge">🏴‍☠️ Birthday Voyage</div>
     <nav>
       <a href="#hero"   data-view="hero">Home</a>
       <a href="#letter" data-view="letter">Letter</a>
       <a href="#quest"  data-view="quest">Quest Log</a>
-      <a href="#" id="reset">Reset</a>
     </nav>
   </header>
 
-  <!-- VIEW 1: HERO -->
-  <section id="hero" class="hero nautical view active">
-    <div class="compass" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <h1 class="gradient-head">Happy Birthday, <span id="nameSpot">Rohit</span>!</h1>
-      <p id="subtitle">Captain, our mission is clear: sail the Grand Line of NYC, clear each island, and claim the <strong>One Piece</strong> at journey’s end.</p>
-      <div class="cta-row">
-        <button id="confettiBtn" class="btn primary">Set Sail (Confetti)</button>
-        <button id="musicBtn" class="btn ghost">Play Song</button>
-        <button id="easterBtn" class="btn ghost" title="Straw Hat Mode">👒 Straw Hat</button>
+  <!-- MAIN CONTENT (lets footer stick to bottom) -->
+  <main id="page-main">
+
+    <!-- VIEW 1: HERO -->
+    <section id="hero" class="hero nautical view active">
+      <div class="compass" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <h1 class="gradient-head">
+          Happy Birthday, <span id="nameSpot">Rohit</span>!
+        </h1>
+
+        <p id="subtitle">
+          Captain, our mission is clear: sail the Grand Line of NYC, clear each island,
+          and claim the <strong>One Piece</strong> at journey’s end.
+        </p>
+
+        <div class="cta-row">
+          <button id="confettiBtn" class="btn primary">Set Sail (Confetti)</button>
+          <button id="musicBtn" class="btn ghost">Play Song</button>
+          <button id="easterBtn" class="btn ghost" title="Straw Hat Mode">👒 Straw Hat Mode</button>
+        </div>
+
+        <div class="meta-line">
+          <code class="tag">Website Release Date: 11/12/2025</code>
+          <code class="tag">Day Of Voyage: 11/15/2025</code>
+        </div>
+
+        <div class="countdown" id="midnightMsg">Waiting for birthday midnight…</div>
       </div>
-      <div class="meta-line">
-        <code class="tag">release: 2025-11-12</code>
-        <code class="tag">voyage: 2025-11-15</code>
+
+      <!-- Quick Start / What is this -->
+      <div class="hero-grid">
+        <div class="guide-card">
+          <h3>What is this?</h3>
+          <p>
+            Pretend you’re Monkey D. Luffy, captain of the Straw Hat Crew.
+            But today, your voyage isn’t across the Grand Line — it’s across your birthday.
+          </p>
+          <p>
+            This is a pirate-themed scavenger adventure built just for you.
+            Each island hides a story, a clue, a treat, and maybe a test of courage.
+            Your mission? Sail from island to island, clear every challenge, and uncover the legendary treasure known only as The One Piece.
+          </p>
+          </p>
+            The sea’s calling, Captain — time to set sail for the greatest birthday voyage ever.
+          </p>
+        </div>
+
+        <div class="guide-card">
+          <h3>How it works</h3>
+          <ol class="tight">
+            <li>Islands unlock at set times. Make sure to click complete <strong> ONLY AFTER </strong> you clear the previous island.</li>
+            <li>You’ll find directions and a fun hint (your Log Pose) for your next task once you unlock which island you have to go to. Always think two steps ahead. </li>
+            <li>Complete every island, follow the story, and you’ll uncover your One Piece — the final reward waiting at the end of your adventure. </li>
+          </ol>
+        </div>
+
+        <div class="guide-card">
+          <h3>Pro Tips for the Voyage</h3>
+          <ul class="tight">
+            <li>🍖 Don’t skip meals, Luffy.</li>
+            <li>📍 Follow the directions when you're ready to sail to next spot</li>
+            <li>🔊 Be sure to listen to your crewmates. They will serve as imperative guides</li>
+            <li>📸 Take a photo at every island. The One Piece awaits proof.</li>
+            <li> 🗺️ If you get lost, blame Nami (aka Farhin). </li>
+            <li>💡 You’ll know what the final treasure is when you see it! </li>
+            <li> ❤️ Remember, it's about the journey </li>
+        </div>        
       </div>
-      <div class="countdown" id="midnightMsg">Waiting for birthday midnight…</div>
-      <small class="hint">
-        Islands unlock at time + after the previous island is cleared. 
-      </small>
-    </div>
 
-    <!-- animated waves -->
-    <div class="waves">
-      <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="wave wave1">
-        <path d="M0,0 C150,100 350,0 600,60 C850,120 1050,20 1200,80 L1200,120 L0,120 Z"></path>
-      </svg>
-      <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="wave wave2">
-        <path d="M0,0 C200,80 400,20 600,60 C800,100 1000,40 1200,80 L1200,120 L0,120 Z"></path>
-      </svg>
-    </div>
-  </section>
 
-  <!-- VIEW 2: LETTER -->
-  <section id="letter" class="wrap view">
-    <h2>Open When: It’s Your Birthday 💌</h2>
-    <div class="letter">
-      <button id="openLetter" class="btn primary">Open Letter</button>
-      <div id="letterBody" class="letter-body" hidden>
-        <p>Happy Birthday, Rohit! You’re brilliant, kind, and endlessly curious — and I love how your eyes light up when you explain the nerdiest things. Thank you for the care you put into everything, including building me a website. Today is your day, and I can’t wait to celebrate every part of it with you.</p>
-        <p>This voyage is my gift back — a little world where you’re the captain. I hope every island makes you feel seen, cheered for, and treasured.</p>
-        <p>— Farhin 💙</p>
+      <!-- Animated waves (hero background) -->
+      <div class="waves" aria-hidden="true">
+        <!-- Layer 1: deepest, slowest -->
+        <div class="wave-layer bob1">
+          <svg class="wave move1" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,40 C180,80 360,0 540,30 C720,60 900,20 1080,40 C1260,60 1440,30 1440,30 L1440,120 L0,120 Z"></path>
+          </svg>
+        </div>
+        <!-- Layer 2 -->
+        <div class="wave-layer bob2">
+          <svg class="wave move2" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,60 C200,20 400,80 600,50 C800,20 1000,70 1200,45 C1350,30 1440,45 1440,45 L1440,120 L0,120 Z"></path>
+          </svg>
+        </div>
+        <!-- Layer 3 -->
+        <div class="wave-layer bob3">
+          <svg class="wave move3" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,70 C180,40 360,100 540,70 C720,40 900,95 1080,55 C1260,35 1440,65 1440,65 L1440,120 L0,120 Z"></path>
+          </svg>
+        </div>
+        <!-- Layer 4: closest, fastest -->
+        <div class="wave-layer bob4">
+          <svg class="wave move4" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,85 C220,55 440,115 660,85 C880,55 1100,110 1320,75 C1380,65 1440,75 1440,75 L1440,120 L0,120 Z"></path>
+          </svg>
+        </div>
       </div>
-    </div>
-  </section>
+    </section> <!-- ✅ close HERO properly -->
 
-  <!-- VIEW 3: QUEST -->
-  <section id="quest" class="wrap view">
-    <h2>Quest Log — Islands on the Grand Line</h2>
-    <div id="progress" class="progress"><div id="bar"></div></div>
-    <div id="steps" class="steps"></div>
-    <p class="hint">Locked islands show a live countdown. Clear them in order to chart the next course.</p>
-  </section>
+    <!-- VIEW 2: LETTER -->
+    <section id="letter" class="wrap view">
+      <h2>Open When: It’s Your Birthday 💌</h2>
+      <div class="letter">
+        <button id="openLetter" class="btn primary">Open Letter</button>
+        <div id="letterBody" class="letter-body" hidden>
+          <p>Happy Birthday, Rohit! </p>
+          <p>This voyage is my gift back — a little world where you’re the captain.
+             I hope every island makes you feel seen, cheered for, and treasured.</p>
+          <p>— Love, Farhin 💙</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Final reveal modal (hidden by default; shown via JS class) -->
+    <!-- VIEW 3: QUEST -->
+    <section id="quest" class="wrap view">
+      <h2>Quest Log — Islands on the Grand Line</h2>
+      <div id="progress" class="progress"><div id="bar"></div></div>
+      <div id="steps" class="steps"></div>
+      <p class="hint">Locked islands show a live countdown. Clear them in order to chart the next course.</p>
+    </section>
+
+  </main> <!-- end #page-main -->
+
+  <!-- Final reveal modal -->
   <div id="finalModal" class="modal">
     <div class="modal-card">
       <h3>The One Piece has been found! ✨</h3>
@@ -86,8 +159,9 @@
     </div>
   </div>
 
+  <!-- SITE FOOTER -->
   <footer class="site-footer nautical">
-    <div class="waves waves-foot">
+    <div class="waves waves-foot" aria-hidden="true">
       <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="wave wave1">
         <path d="M0,0 C150,100 350,0 600,60 C850,120 1050,20 1200,80 L1200,120 L0,120 Z"></path>
       </svg>
@@ -95,28 +169,131 @@
         <path d="M0,0 C200,80 400,20 600,60 C800,100 1000,40 1200,80 L1200,120 L0,120 Z"></path>
       </svg>
     </div>
-    <p>Made with 💙 by Farhin. <span class="sep">•</span> <a href="#" id="shareLink">Copy link</a></p>
+    <p>
+      Made with 💙 by Farhin. <span class="sep">•</span>
+      <a href="#" id="shareLink">Copy link</a>
+    </p>
   </footer>
 
+  <!-- AUDIO -->
   <audio id="song" src="assets/song.mp3" preload="none"></audio>
 
+  <!-- CONFIG (unchanged) -->
   <script>
-  /* ---- Site config ---- */
-  window.BDAY_CONFIG = {
-    name: "Rohit",
-    bdayDateEt: "2025-11-15",
-    itineraryDateEt: "2025-11-15",
-    steps: [
-      { id:"roosevelt", timeEt:"11:00", prettyTime:"11:00 AM", title:"Port Roosevelt — The Dock of Departure", short:"Where two paths meet.", details:"Every great voyage begins at the dock where fate brings the crew together. Board the sea train to destiny.", mapUrl:"https://maps.app.goo.gl/", icon:"🗺️" },
-      { id:"golden", timeEt:"11:30", prettyTime:"11:30 AM", title:"East Blue Diner — Island of Pancakes", short:"Provisions secured.", details:"First island: warm pancakes and laughter. Captain debates waffles vs pancakes once more. 🥞", mapUrl:"https://maps.app.goo.gl/", photo:"assets/photo-1.jpg", icon:"🥞", clue:"Seek the next challenge in the city of secrets." },
-      { id:"cipher", timeEt:"13:30", prettyTime:"1:30 PM", title:"Cipher Isle — Puzzles of the Grand Line", short:"Trials for clever pirates.", details:"Only teamwork and sharp minds can pass. Choose your arena: Immersive Gamebox or SPYSCAPE.", mapUrl:"https://maps.app.goo.gl/", photo:"assets/photo-2.jpg", icon:"🧩", clue:"After trials, the crew debates again… waffles or pancakes." },
-      { id:"snack", timeEt:"15:45", prettyTime:"3:45 PM", title:"Snack Reef — Battle of the Griddles", short:"Sugar + victory.", details:"Refuel at Wafels & Dinges. The debate reignites: pancakes vs waffles. Choose wisely. 🧇", mapUrl:"https://maps.app.goo.gl/", photo:"assets/photo-3.jpg", icon:"🧇", clue:"Forge the vessel that will protect your treasure." },
-      { id:"coral", timeEt:"17:00", prettyTime:"5:00 PM", title:"Coral Forge — Island of Creation", short:"Make the treasure chest.", details:"At Color Me Mine, craft a small keepsake box — the chest that will hold the One Piece.", mapUrl:"https://maps.app.goo.gl/", photo:"assets/photo-4.jpg", icon:"🎨", clue:"Only one island remains… the place where hearts meet the skyline." },
-      { id:"dinner", timeEt:"19:00", prettyTime:"7:00 PM", title:"Harbor Tavern — Feast of the Crew", short:"Fuel for the finale.", details:"Under city lights, the captain and first mate dine to celebrate a voyage well-sailed.", mapUrl:"https://maps.app.goo.gl/", photo:"assets/photo-5.jpg", icon:"🍽️", clue:"The final island faces the skyline." },
-      { id:"lic", timeEt:"20:30", prettyTime:"8:30 PM", title:"Final Island — Grand Treasure of LIC", short:"Skyline + sweetness.", details:"Canelle Bakery cake at Hunter’s Point South Park. The Grand Line ends here — claim your treasure.", mapUrl:"https://maps.app.goo.gl/", icon:"🎂", final:true }
-    ]
-  };
+    /* ---- Site config ---- */
+    window.BDAY_CONFIG = {
+      name: "Rohit",
+      bdayDateEt: "2025-11-15",
+      itineraryDateEt: "2025-11-15",
+      steps: [
+        {
+          id:"roosevelt",
+          timeEt:"11:00",
+          prettyTime:"11:00 AM",
+          title:"Port Roosevelt — The Dock of Departure",
+          short:"Where two paths meet.",
+          details:"Every great voyage begins at the dock where fate brings the crew together. Board the sea train to destiny. Follow the directions below at the above time to begin your hunt.",
+          icon:"🗺️",
+          directions: [
+            "Meet your navigator at Roosevelt Ave Subway Station"
+          ],
+        },
+  
+        {
+          id:"golden",
+          timeEt:"12:00",
+          prettyTime:"12:00 PM",
+          title:"East Blue Diner — Island of Pancakes",
+          short:"Secure Provisions",
+          details:"After trials, the crew debates… waffles or pancakes.",
+          icon:"🥞",
+          clue:"The compass glows with the color of gold — an island where syrup flows richer than Beli.",
+          directions: [
+            "Take F Train to East Broadway",
+            "Follow your crewmate for a 5-10 min walk due east",
+          ]
+        },
+  
+        {
+          id:"cipher",
+          timeEt:"13:30",
+          prettyTime:"1:30 PM",
+          title:"Cipher Isle — Puzzles of the Grand Line",
+          short:"Trials for clever pirates.",
+          details:"Only teamwork and sharp minds can pass.",
+          icon:"🧩",
+          clue:"Whispers of the ancient Cipher Pol drift through the air.",
+          directions: [
+            "Your advanture is not to far off. Follow your navigator for a brisk 15 min walk"
+          ],
+          dirTip: "Stick with your crew—trust matters here."
+        },
+  
+        {
+          id:"snack",
+          timeEt:"15:00",
+          prettyTime:"3:00 PM",
+          title:"Snack Reef — Battle of the Griddles",
+          short:"Where sweetness meets rivalry.",
+          details:"A duel older than time itself: two golden foes, locked in syruped combat.",
+          icon:"🧇",
+          clue:"The needle wavers between two peaks of gold.",
+          directions: [
+            "Head to Bryant Park to find your next task"
+          ]
+        },
+  
+        {
+          id:"coral",
+          timeEt:"16:00",
+          prettyTime:"4:00 PM",
+          title:"Coral Forge — Island of Creation",
+          short:"Where legends are shaped by hand.",
+          details:"Forge the chest that will hold your dreams.",
+          icon:"🎨",
+          clue:"The compass glows coral red, pulsing with warmth.",
+          directions: [
+            "Take the red line to 72nd Ave",
+            "Take a leisurely 5 min walk due west",
+          ]
+        },
+  
+        {
+          id:"dinner",
+          timeEt:"18:30",
+          prettyTime:"6:30 PM",
+          title:"Harbor Tavern — Feast of the Crew",
+          short:"Where sails rest and stories rise.",
+          details:"Night falls over the Grand Line. The captain and crew dine under city lights.",
+          icon:"🍽️",
+          clue:"A harbor filled with salt and smoke, where memories mingle.",
+          directions: [
+            "Walk toward the waterfront along **[avenue]**.",
+            "Turn left at **[street]**, restaurant on the **right**.",
+            "Ask for **Rohit**’s table if needed."
+          ]
+        },
+  
+        {
+          id:"lic",
+          timeEt:"20:30",
+          prettyTime:"8:30 PM",
+          title:"Final Island — Grand Treasure Awaits",
+          short:"Where every voyage ends — and begins again.",
+          details:"The horizon glows with promise.",
+          icon:"🎂",
+          clue:"Beyond steel and sea, the world opens—sweet, silent, infinite.",
+          directions: [
+            "Take the 7 to LIC - you know the way from there",
+          ],
+          final:true
+        }
+      ]
+    };
   </script>
+  
+
+  <!-- APP SCRIPT -->
   <script src="script.js"></script>
 </body>
 </html>
