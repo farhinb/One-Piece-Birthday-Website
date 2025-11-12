@@ -8,6 +8,18 @@
   // Optional: show all steps (debug). Use &show=all in the URL.
   const showAll = new URL(location.href).searchParams.get("show") === "all";
 
+  function renderDirections(dirs, tipText) {
+    if (!dirs || !dirs.length) return "";
+    const items = dirs.map(s => `<li>${s}</li>`).join("");
+    return `
+      <div class="directions">
+        <div class="dir-head">🧭 Directions</div>
+        <ol>${items}</ol>
+        ${tipText ? `<div class="dir-tip">💡 ${tipText}</div>` : ""}
+      </div>
+    `;
+  }
+  
   // ------------------------------
   // Fake clock / time simulator
   // ------------------------------
@@ -106,7 +118,7 @@
       if (midnightEl) midnightEl.textContent = "";
       return;
     }
-    const target = new Date(`${bday}T00:00:00-05:00`);
+    const target = new Date(`${bday}T11:00:00-05:00`);
     function tick() {
       const n = now();
       const diff = target - n;
@@ -122,7 +134,7 @@
       const h = Math.floor((diff / 3600000) % 24);
       const m = Math.floor((diff / 60000) % 60);
       const s = Math.floor((diff / 1000) % 60);
-      if (midnightEl) midnightEl.textContent = `Midnight unlock in ${d}d ${h}h ${m}m ${s}s`;
+      if (midnightEl) midnightEl.textContent = `First Challenge Unlocks  in ${d}d ${h}h ${m}m ${s}s. Are you ready?`;
       requestAnimationFrame(tick);
     }
     tick();
@@ -226,7 +238,7 @@
         <div class="body">
           <p>${s.details}</p>
           ${s.clue ? `<p class="mono" style="opacity:.85">Log Pose ➜ ${s.clue}</p>` : ""}
-          ${s.mapUrl ? `<p><a href="${s.mapUrl}" target="_blank" rel="noopener">Open directions ↗</a></p>` : ""}
+          ${s.directions ? renderDirections(s.directions, s.dirTip) : ""}
           ${s.photo ? `<img src="${s.photo}" alt="${s.title}" style="width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-top:8px" />` : ""}
           <div class="actions">
             <button class="btn primary" data-done="${s.id}">${done ? "Mark as not cleared" : "Mark island cleared"}</button>
@@ -470,5 +482,8 @@
   })();
 
 })(); // <--- close main IIFE
+
+
+
 
 
